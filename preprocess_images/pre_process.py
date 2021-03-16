@@ -3,7 +3,6 @@ import glob
 from PIL import Image
 import time
 import cv2
-import matplotlib.pyplot as plt
 
 
 # dimensions used to resize images
