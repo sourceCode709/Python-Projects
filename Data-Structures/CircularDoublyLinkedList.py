@@ -4,9 +4,7 @@
 # This is an implementation of a circular doubly linked list
 
 class CircularDoublyLinkedList:
-  # nested _Node class
   class _Node:
-    #Lightweight, nonpublic class for storing a doubly linked node.
     __slots__ = '_element', '_prev', '_next'            
 
     def __init__(self, element, prev, next):            
@@ -14,7 +12,6 @@ class CircularDoublyLinkedList:
       self._prev = prev                                 
       self._next = next                                 
 
-  # list constructor
   def __init__(self):
     """Create an empty list."""
     self._start = None
@@ -64,7 +61,6 @@ class CircularDoublyLinkedList:
       self._start._prev = head
     self._size += 1
     
-
   def insertAtEnd(self, e):
     if self._start == None:
       head = self._Node(0, None, None)
