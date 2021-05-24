@@ -20,11 +20,11 @@ def main():
     browse_jpg = tk.Button(text="Select JPG file", command=get_jpg, bg="royalblue", fg='white', font=('helvetica', 12, 'bold'))
     the_convas.create_window(300, 140, window=browse_jpg)
 
-    save_as_jpg_button = tk.Button(text="Convert PNG to JPG", command=png_to_jpg, bg='royalblue', fg='white', font=('helvetica', 12, 'bold'))
-    the_convas.create_window(100, 190, window=save_as_jpg_button)
+    save_as_jpg = tk.Button(text="Convert PNG to JPG", command=png_to_jpg, bg='royalblue', fg='white', font=('helvetica', 12, 'bold'))
+    the_convas.create_window(100, 190, window=save_as_jpg)
 
-    save_as_png_button = tk.Button(text="Convert JPG to PNG", command=jpg_to_png, bg='royalblue', fg='white', font=('helvetica', 12, 'bold'))
-    the_convas.create_window(300, 190, window=save_as_png_button)
+    save_as_png = tk.Button(text="Convert JPG to PNG", command=jpg_to_png, bg='royalblue', fg='white', font=('helvetica', 12, 'bold'))
+    the_convas.create_window(300, 190, window=save_as_png)
 
     window.mainloop()
 
