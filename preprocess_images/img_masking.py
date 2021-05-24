@@ -1,12 +1,14 @@
 import cv2
 from cffi.backend_ctypes import xrange
 from matplotlib import pyplot as plt
+import glob
 
 
 def main():
     mask_img()
-
-
+    mask_all_imgs()
+    
+# compute and plot an image with different thresholds
 def mask_img():
     # load image
     img = cv2.imread("CP_2429_2890_0063.png")
@@ -44,16 +46,30 @@ def mask_img():
         plt.subplot(3, 3, i * 3 + 3), plt.imshow(images[i * 3 + 2], 'gray')
         plt.title(titles[i * 3 + 2]), plt.xticks([]), plt.yticks([])
     plt.show()
+    
+# apply Otsu's Thresholding to images and save
+def mask_all_imgs():
+    for file in glob.iglob('images/*.png'):
+        # load image
+        img = cv2.imread(file)
 
+        # create image masks file name
+        f_name = img.filename
+        length = len(f_name)
+        length -= 4
+        f_new_name = f_name[0:length]
+        f_new_name += "mask.png"
+
+        # convert image to gray-scale
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+        # filter with 5x5 gaussian kernel to reduce noise
+        img = cv2.GaussianBlur(img, (5, 5), 0)
+
+        # apply Otsu's thresholding with Gaussian filtered noise reduction
+        otsu_threshold, otsu_img = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+        otsu_img.save(f_new_name)
 
 main()
-
-
-
-
-
-
-
-
-
 
